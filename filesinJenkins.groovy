@@ -23,3 +23,15 @@ node('master') {
         echo "${filename}"
     }
 }
+
+node {
+  // ... check out code, whatever
+  final foundFiles = sh(script: 'ls -1 dockerfiles', returnStdout: true).split()
+  // Do stuff with filenames
+}
+
+node {
+  // ... check out code, whatever
+  final foundFiles = findFiles(glob: 'dockerfiles/**/*')
+  // do things with FileWrapper[]
+}
